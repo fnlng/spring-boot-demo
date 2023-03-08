@@ -1,0 +1,89 @@
+spring:
+  profiles:
+    active: dev-hikari
+
+
+---
+
+
+server:
+  port: 8080
+
+debug: true
+
+logging:
+  level:
+    org.springframework: OFF
+    org.springframework.boot.autoconfigure: OFF
+    org.mybatis: DEBUG
+
+management:
+  security:
+    enable: false
+  
+  endpoints:
+    web:
+      exposure:
+        include:
+          info, health, beans, env, metrics
+
+spring:
+  profiles: dev-mybatis
+
+---
+
+server:
+  port: 8080
+
+debug: true
+
+logging:
+  level:
+    # root: OFF
+    org.springframework: OFF
+    org.springframework.boot.autoconfigure: OFF
+    org.hibernate: DEBUG
+
+management:
+  security:
+    enable: false
+  
+  endpoints:
+    web:
+      exposure:
+        include:
+          info, health, beans, env, metrics
+
+spring:
+  profiles: dev-hikari
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    data: classpath:/data.sql
+    schema: classpath:/schema.sql
+    driverClassName: org.h2.Driver
+    username: sa
+    password: 
+    platform: h2
+  
+  h2:
+    console:
+      enabled: true
+      path: /h2
+      settings:
+        web-allow-others: true
+  
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+
+---
+
+spring:
+  profiles: prod # 生产环境

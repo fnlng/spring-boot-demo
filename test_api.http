@@ -1,0 +1,21 @@
+GET http://localhost:8080/actuator/health HTTP/1.1
+
+###
+
+http://localhost:8080/actuator/info HTTP/1.1
+
+
+###
+
+http://localhost:8080/actuator/beans
+
+
+###
+
+http://localhost:8080/hello/1998
+
+###
+
+
+http://localhost:8080/hello/users
+
